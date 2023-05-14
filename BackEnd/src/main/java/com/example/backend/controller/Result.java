@@ -14,4 +14,9 @@ public class Result {
         this.code = code;
         this.msg = msg;
     }
+    public Result(Integer code, Object data, String msg) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
 }
