@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.backend.entity.Indent;
 import com.example.backend.mapper.IndentMapper;
 import com.example.backend.service.IndentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
 * @author Jiang
@@ -16,12 +19,14 @@ import org.springframework.stereotype.Service;
 public class IndentServiceImpl extends ServiceImpl<IndentMapper, Indent>
     implements IndentService {
 
+    @Autowired
+    IndentMapper indentMapper;
+
     @Override
-    public Indent getByUserId(Integer userId) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("userId", userId.toString());
-        return this.getOne(queryWrapper);
+    public List<Indent> getByUserId(Integer userId) {
+        return indentMapper.getByUserId(userId);
     }
+
 }
 
 
