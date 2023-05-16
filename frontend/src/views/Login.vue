@@ -105,11 +105,11 @@
             .then((response) => {
               if (response.data.msg == "登入成功") {
                 console.log("登入成功");
-                <el-alert
-                  title="登入成功"
-                  type="success"
-                  show-icon>
-                </el-alert>
+                this.$message({
+                  title: '成功',
+                  message: '登入成功',
+                  type: 'success'
+                });
                 this.$router.push({ name: 'Home' })
               } else {
                 alert("登入失败")
@@ -136,7 +136,7 @@
                   message: '注册成功',
                   type: 'success'
                 });
-                window.location.reload();
+                this.$router.push({ name: 'Home' })
               } else {
                 alert("注册失败")
                 console.log("注册失败");

@@ -1,4 +1,4 @@
-package com.example.backend.entity;
+package entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -8,14 +8,16 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * @TableName room
+ * @TableName manager
  */
-@TableName(value ="room")
+@TableName(value ="manager")
 @Data
-public class Room implements Serializable {
+public class Manager implements Serializable {
     private Integer id;
 
     private String name;
+
+    private String password;
 
     private static final long serialVersionUID = 1L;
 }

@@ -1,4 +1,4 @@
-package com.example.backend.entity;
+package entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -8,20 +8,18 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * @TableName ticket
+ * @TableName seat
  */
-@TableName(value ="ticket")
+@TableName(value ="seat")
 @Data
-public class Ticket implements Serializable {
+public class Seat implements Serializable {
     private Integer id;
 
-    private Integer userId;
+    private String rowNum;
 
-    private Integer sessionId;
+    private Integer colNum;
 
-    private Integer seatId;
-
-    private Integer price;
+    private Integer roomId;
 
     private static final long serialVersionUID = 1L;
 }

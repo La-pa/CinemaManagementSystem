@@ -5,7 +5,6 @@ import store from './store';
 import ElementUI from 'element-ui';
 import axios from 'axios';
 import 'element-ui/lib/theme-chalk/index.css';
-
 Vue.config.productionTip = false
 
 axios.defaults.baseURL = "http://localhost:9090"

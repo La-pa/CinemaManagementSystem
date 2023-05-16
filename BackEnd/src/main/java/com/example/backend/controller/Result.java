@@ -6,8 +6,17 @@ import java.io.ObjectOutput;
 
 @Data
 public class Result {
+    /**
+     * 状态码
+     */
     private Integer code;
+    /**
+     * 信息
+     */
     private String msg;
+    /**
+     * 返回数据
+     */
     private Object data;
 
     public Result(Integer code, String msg) {
