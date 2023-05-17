@@ -1,12 +1,15 @@
 package com.example.backend.controller;
 
 import com.example.backend.entity.Indent;
+import com.example.backend.entity.Ticket;
 import com.example.backend.service.IndentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/orders")
@@ -56,13 +59,19 @@ public class IndentController {
         }
     }
 
+    // TODO 测试session功能
+
     /**
      * 添加订单
-     * @param indent
+     * @param ticket
+     * @param request
      * @return
      */
     @PostMapping
-    public Result insertIndent(@RequestBody Indent indent) {
+    public Result insertIndent(@RequestBody Ticket ticket, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Integer userId = (Integer) session.getAttribute("userId");
+        Indent indent = new Indent(new Date(), ticket.getId(), ticket, userId);
         return new Result(Code.INSERT_SUCCESS, indentService.addDate(indent), "订单添加成功");
     }
 }

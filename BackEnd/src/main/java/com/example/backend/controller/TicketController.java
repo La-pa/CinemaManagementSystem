@@ -26,7 +26,6 @@ public class TicketController {
     @Autowired
     private SeatService seatService;
 
-    // TODO 感觉要删除电影票中的用户属性
 
     /**
      * 查询该场次已购买的座位

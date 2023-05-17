@@ -26,5 +26,13 @@ public class Indent implements Serializable {
 
     private Integer userId;
 
+
+    public Indent(Date purchaseTime, Long ticketId, Ticket ticket, Integer userId) {
+        this.purchaseTime = purchaseTime;
+        this.ticketId = ticketId;
+        this.ticket = ticket;
+        this.userId = userId;
+    }
+
     private static final long serialVersionUID = 1L;
 }
