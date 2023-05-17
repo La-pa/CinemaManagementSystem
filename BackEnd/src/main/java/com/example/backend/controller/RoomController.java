@@ -18,6 +18,11 @@ public class RoomController {
     private RoomService roomService;
 
 
+    /**
+     * 查询放映厅名字
+     * @param id
+     * @return
+     */
     @GetMapping("/{id}")
     public Result findById(@PathVariable Integer id) {
         return new Result(Code.QUERY_SUCCESS, roomService.getById(id), "放映厅查询成功");

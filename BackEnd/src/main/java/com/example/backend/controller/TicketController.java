@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.backend.entity.Seat;
 import com.example.backend.entity.Session;
 import com.example.backend.entity.Ticket;
+import com.example.backend.service.SeatService;
 import com.example.backend.service.SessionService;
 import com.example.backend.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,22 +23,27 @@ public class TicketController {
     @Autowired
     private TicketService ticketService;
 
-    @GetMapping("/tickets/{sessionId}")
+    @Autowired
+    private SeatService seatService;
+
+    // TODO 感觉要删除电影票中的用户属性
+
+    /**
+     * 查询该场次已购买的座位
+     * @param sessionId
+     * @return
+     */
+    @GetMapping("/{sessionId}")
     public Result findBySessionId(@PathVariable Integer sessionId) {
         LambdaQueryWrapper<Ticket> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(Ticket::getSessionId, sessionId);
         List<Ticket> tickets = ticketService.list(wrapper);
-        List<Seat> seats;
-        /*
-        查询每个电影票的座位
-
-         */
-        // TODO 感觉要删除电影票中的用户属性
-
+        List<Seat> seats = null;
         for (Ticket ticket: tickets) {
-//            seats.a
+            Seat seat = seatService.getById(ticket.getSeatId());
+            seats.add(seat);
         }
-        return new Result(Code.QUERY_SUCCESS, null, "座位查询成功");
+        return new Result(Code.QUERY_SUCCESS, seats, "座位查询成功");
     }
 
 }
