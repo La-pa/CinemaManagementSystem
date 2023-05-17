@@ -14,11 +14,11 @@ public class IndentController {
     @Autowired
     private IndentService indentService;
 
-//    /**
-//     * 查看当前用户的订单
-//     * @param request
-//     * @return Result
-//     */
+    /**
+     * 查看当前用户的订单
+     * @param request
+     * @return Result
+     */
     @GetMapping
     public Result findAll(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -36,19 +36,33 @@ public class IndentController {
         }
     }
 
+    /**
+     * 删除订单
+     * @param id
+     * @return
+     */
     @DeleteMapping("/{id}")
-    public Result deleteOrder(@PathVariable Integer id) {
-        Indent order = indentService.getById(id);
-        if (order == null) {
+    public Result deleteIndent(@PathVariable Integer id) {
+        Indent indent = indentService.getById(id);
+        if (indent == null) {
             return new Result(Code.DELETE_ERROR, "未找到该订单");
         }
 
-        boolean flag = indentService.removeById(id);
+        boolean flag = indentService.deleteById(id);
         if (flag) {
-            return new Result(Code.DELETE_SUCCESS, "订单删除成功");
+            return new Result(Code.DELETE_SUCCESS, true,"订单删除成功");
         } else {
-            return new Result(Code.DELETE_ERROR, "系统出错");
+            return new Result(Code.DELETE_ERROR, false,"订单删除失败");
         }
     }
 
+    /**
+     * 添加订单
+     * @param indent
+     * @return
+     */
+    @PostMapping
+    public Result insertIndent(@RequestBody Indent indent) {
+        return new Result(Code.INSERT_SUCCESS, indentService.addDate(indent), "订单添加成功");
+    }
 }

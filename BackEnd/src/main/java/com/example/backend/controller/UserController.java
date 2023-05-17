@@ -15,10 +15,21 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 查询全部用户的信息
+     * @return
+     */
     @GetMapping
     public Result findAll() {
         return new Result(Code.QUERY_SUCCESS, userService.list(), "查询成功");
     }
+
+    /**
+     * 登入业务
+     * @param user
+     * @param request
+     * @return
+     */
     @PostMapping("/login")
     public Result login(@RequestBody User user, HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -36,6 +47,12 @@ public class UserController {
         }
     }
 
+    /**
+     * 注册业务
+     * @param user
+     * @param request
+     * @return
+     */
     @PostMapping("/register")
     public Result register(@RequestBody User user, HttpServletRequest request) {
         User user1 = userService.getById(user.getId());

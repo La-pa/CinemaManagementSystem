@@ -12,6 +12,8 @@ import java.util.List;
 */
 public interface IndentService extends IService<Indent> {
     public List<Indent> getByUserId(Integer userId);
+    public boolean deleteById(Integer id);
 
+    public boolean addDate(Indent indent);
 
 }
