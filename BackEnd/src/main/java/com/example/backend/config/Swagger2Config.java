@@ -3,8 +3,9 @@ package com.example.backend.config;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-//@Configuration
+@Configuration
 @EnableSwagger2
-public class SwaggerConfig {
+public class Swagger2Config {
 
 }
+

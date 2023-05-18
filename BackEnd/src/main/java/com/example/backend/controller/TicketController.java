@@ -5,6 +5,7 @@ import com.example.backend.entity.Seat;
 import com.example.backend.entity.Ticket;
 import com.example.backend.service.SeatService;
 import com.example.backend.service.TicketService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,11 +25,8 @@ public class TicketController {
     private SeatService seatService;
 
 
-    /**
-     * 查询该场次已购买的座位
-     * @param sessionId
-     * @return
-     */
+
+    @ApiOperation("查询该场次已购买的座位")
     @GetMapping("/{sessionId}")
     public Result findBySessionId(@PathVariable Integer sessionId) {
         LambdaQueryWrapper<Ticket> wrapper = new LambdaQueryWrapper<>();

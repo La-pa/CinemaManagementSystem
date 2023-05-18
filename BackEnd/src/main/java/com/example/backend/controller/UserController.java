@@ -26,12 +26,7 @@ public class UserController {
         return new Result(Code.QUERY_SUCCESS, userService.list(), "查询成功");
     }
 
-    /**
-     * 登入业务
-     * @param user
-     * @param request
-     * @return
-     */
+    @ApiOperation("登入业务")
     @PostMapping("/login")
     public Result login(@RequestBody User user, HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -49,12 +44,8 @@ public class UserController {
         }
     }
 
-    /**
-     * 注册业务
-     * @param user
-     * @param request
-     * @return
-     */
+
+    @ApiOperation("注册业务")
     @PostMapping("/register")
     public Result register(@RequestBody User user, HttpServletRequest request) {
         User user1 = userService.getById(user.getId());

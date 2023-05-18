@@ -5,6 +5,7 @@ import com.example.backend.entity.Seat;
 import com.example.backend.service.SeatService;
 import com.example.backend.service.SessionService;
 import io.swagger.annotations.ApiOperation;
+//import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

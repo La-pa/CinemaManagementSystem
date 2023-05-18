@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.backend.entity.Session;
 import com.example.backend.service.RoomService;
 import com.example.backend.service.SessionService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,11 +19,8 @@ public class RoomController {
     private RoomService roomService;
 
 
-    /**
-     * 查询放映厅名字
-     * @param id
-     * @return
-     */
+    @ApiOperation("查询放映厅名字")
+
     @GetMapping("/{id}")
     public Result findById(@PathVariable Integer id) {
         return new Result(Code.QUERY_SUCCESS, roomService.getById(id), "放映厅查询成功");

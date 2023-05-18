@@ -1,6 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.service.MovieService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,11 +23,9 @@ public class MovieController {
         return new Result(Code.QUERY_SUCCESS, movieService.findAll(),"查询成功");
     }
 
-    /**
-     * 查看电影的详情
-     * @param id
-     * @return
-     */
+
+    @ApiOperation("查看电影的详情")
+
     @GetMapping("/{id}")
     public Result getById(@PathVariable Integer id) {
         return new Result(Code.QUERY_SUCCESS, movieService.getById(id), "查询成功");

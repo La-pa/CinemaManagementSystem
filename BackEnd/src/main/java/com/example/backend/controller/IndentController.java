@@ -3,6 +3,7 @@ package com.example.backend.controller;
 import com.example.backend.entity.Indent;
 import com.example.backend.entity.Ticket;
 import com.example.backend.service.IndentService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
@@ -15,11 +16,9 @@ public class IndentController {
     @Autowired
     private IndentService indentService;
 
-    /**
-     * 查看当前用户的订单
-     * @param request
-     * @return Result
-     */
+
+    @ApiOperation("查看当前用户的订单")
+
     @GetMapping
     public Result findAll(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -37,11 +36,9 @@ public class IndentController {
         }
     }
 
-    /**
-     * 删除订单
-     * @param id
-     * @return
-     */
+
+    @ApiOperation("删除订单")
+
     @DeleteMapping("/{id}")
     public Result deleteIndent(@PathVariable Integer id) {
         Indent indent = indentService.getById(id);
@@ -58,12 +55,9 @@ public class IndentController {
     }
 
 
-    /**
-     * 添加订单
-     * @param ticket
-     * @param request
-     * @return
-     */
+
+    @ApiOperation("添加订单")
+
     @PostMapping
     public Result insertIndent(@RequestBody Ticket ticket, HttpServletRequest request) {
         HttpSession session = request.getSession();
