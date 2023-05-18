@@ -2,6 +2,7 @@ package com.example.backend.controller;
 
 import com.example.backend.entity.User;
 import com.example.backend.service.UserService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,7 @@ public class UserController {
      * 查询全部用户的信息
      * @return
      */
+    @ApiOperation("查询全部用户的信息")
     @GetMapping
     public Result findAll() {
         return new Result(Code.QUERY_SUCCESS, userService.list(), "查询成功");
@@ -38,8 +40,8 @@ public class UserController {
             return new Result(Code.QUERY_ERROR, "账号不存在");
         } else {
             System.out.println(user1);
-            if (user1.getPassword().compareTo(user.getPassword()) == 0) {
-                session.setAttribute("userId",user.getId().toString());
+            if (user1.getPassword().equals(user.getPassword())) {
+                session.setAttribute("userId",user.getId());
                 return new Result(Code.QUERY_SUCCESS, "登入成功");
             } else {
                 return new Result(Code.QUERY_ERROR, "密码错误");
@@ -62,7 +64,7 @@ public class UserController {
         } else {
             boolean flag = userService.save(user);
             if (flag) {
-                session.setAttribute("userId",user.getId().toString());
+                session.setAttribute("userId",user.getId());
                 return new Result(Code.INSERT_SUCCESS, "注册成功");
             } else {
                 return new Result(Code.INSERT_ERROR, "系统繁忙，请稍后再试");

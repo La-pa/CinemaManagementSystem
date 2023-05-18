@@ -14,7 +14,7 @@ import lombok.Data;
 @TableName(value ="indent")
 @Data
 public class Indent implements Serializable {
-    @TableId(type = IdType.ASSIGN_ID)
+//    @TableId(type = IdType.ASSIGN_ID)
     private Long id;
 
     private Date purchaseTime;
@@ -25,6 +25,10 @@ public class Indent implements Serializable {
     private Ticket ticket;
 
     private Integer userId;
+
+    public Indent() {
+
+    }
 
 
     public Indent(Date purchaseTime, Long ticketId, Ticket ticket, Integer userId) {

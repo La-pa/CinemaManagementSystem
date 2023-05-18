@@ -15,12 +15,11 @@
         id,purchase_time,ticket_id,
         user_id
     </sql>
-
-
     <resultMap id="IndentDetails" type="com.example.backend.entity.Indent">
         <id property="id" column="id" jdbcType="BIGINT"/>
-        <result property="purchaseTime" column="purchase_time" jdbcType="TIMESTAMP"/>
+        <result property="purchaseTime" column="purchase_time" jdbcType="DATE"/>
         <result property="ticketId" column="ticket_id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
         <association property="ticket" javaType="com.example.backend.entity.Ticket">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="price" column="price" jdbcType="INTEGER"/>
@@ -40,7 +39,6 @@
             </association>
         </association>
     </resultMap>
-
     <select id="getByUserId" resultMap="IndentDetails" parameterType="INT">
         SELECT *
         FROM indent
@@ -49,7 +47,6 @@
                  INNER JOIN movie ON session.movie_id = movie.id
                  INNER JOIN room ON session.room_id = room.id
                  INNER JOIN seat ON ticket.seat_id = seat.id
-        WHERE indent.user_id = #{id}
+        WHERE indent.user_id = #{userId}
     </select>
-
 </mapper>

@@ -5,14 +5,12 @@ import com.example.backend.entity.Ticket;
 import com.example.backend.service.IndentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/indents")
 public class IndentController {
     @Autowired
     private IndentService indentService;
@@ -59,7 +57,6 @@ public class IndentController {
         }
     }
 
-    // TODO 测试session功能
 
     /**
      * 添加订单

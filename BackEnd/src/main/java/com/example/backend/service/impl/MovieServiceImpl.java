@@ -1,6 +1,7 @@
 package com.example.backend.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.backend.entity.Movie;
@@ -20,9 +21,10 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie>
     implements MovieService{
     @Override
     public List<Movie> findAll() {
-        QueryWrapper<Movie> wrapper = new QueryWrapper<>();
-        wrapper.orderByDesc("release_date")
-                .select("id", "title", "image_url");
+        LambdaQueryWrapper<Movie> wrapper = new LambdaQueryWrapper<>();
+        wrapper.orderByDesc(Movie::getReleaseDate)
+                .select(Movie::getId, Movie::getTitle, Movie::getImageUrl)
+                .last("limit 10");
         List<Movie> movies = this.list(wrapper);
         return movies;
     }

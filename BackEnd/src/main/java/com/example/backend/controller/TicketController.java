@@ -1,12 +1,9 @@
 package com.example.backend.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.backend.entity.Seat;
-import com.example.backend.entity.Session;
 import com.example.backend.entity.Ticket;
 import com.example.backend.service.SeatService;
-import com.example.backend.service.SessionService;
 import com.example.backend.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
