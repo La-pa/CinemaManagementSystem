@@ -6,6 +6,7 @@ import com.example.backend.service.SeatService;
 import com.example.backend.service.SessionService;
 import io.swagger.annotations.ApiOperation;
 //import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +23,7 @@ public class SeatController {
 
     @ApiOperation("查询放映厅座位分布情况")
     @GetMapping("/{id}")
-    public Result findByRoomId(@PathVariable Integer roomId) {
+    public Result findByRoomId(@ApiParam("放映厅ID") @PathVariable Integer roomId) {
         LambdaQueryWrapper<Seat> queryWrapper = new LambdaQueryWrapper();
         queryWrapper.eq(Seat::getRoomId, roomId);
         List<Seat> seats = seatService.list(queryWrapper);

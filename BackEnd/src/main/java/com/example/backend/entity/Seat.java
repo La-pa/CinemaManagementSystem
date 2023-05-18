@@ -2,6 +2,8 @@ package com.example.backend.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 /**
@@ -9,6 +11,7 @@ import lombok.Data;
  */
 @TableName(value ="seat")
 @Data
+@ApiModel("座位")
 public class Seat implements Serializable {
     private Integer id;
 
