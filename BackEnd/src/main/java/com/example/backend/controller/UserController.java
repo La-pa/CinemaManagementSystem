@@ -4,6 +4,8 @@ import com.example.backend.entity.User;
 import com.example.backend.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,7 @@ public class UserController {
      * @return
      */
     @ApiOperation("查询全部用户的信息")
+    @ApiResponses(@ApiResponse(code = 200, message = "处理成功"))
     @GetMapping
     public Result findAll() {
         return new Result(Code.QUERY_SUCCESS, userService.list(), "查询成功");

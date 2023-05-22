@@ -5,7 +5,7 @@ import lombok.Data;
 import java.io.ObjectOutput;
 
 @Data
-public class Result {
+public class Result<T> {
     /**
      * 状态码
      */
@@ -17,13 +17,13 @@ public class Result {
     /**
      * 返回数据
      */
-    private Object data;
+    private T data;
 
     public Result(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
     }
-    public Result(Integer code, Object data, String msg) {
+    public Result(Integer code, T data, String msg) {
         this.code = code;
         this.msg = msg;
         this.data = data;
