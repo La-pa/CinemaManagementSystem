@@ -3,6 +3,7 @@ package com.example.backend.controller;
 import com.example.backend.entity.User;
 import com.example.backend.service.UserService;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,5 +64,25 @@ public class UserController {
         }
     }
 
+    @ApiOperation(value = "修改用户密码", notes = "data返回bool类型，表示操作成功或失败")
+    @PutMapping("/changePassword")
+    public Result changePassword(@ApiParam("修改后密码的字符串") @RequestBody String s, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        if (session == null) {
+            return new Result(Code.QUERY_ERROR, false, "请重新登入");
+        }
+        Integer userId = (Integer) session.getAttribute("userId");
+        User user = userService.getById(userId);
+        if (user.getPassword().equals(s)) {
+            return new Result(Code.UPDATE_ERROR, false, "修改后的密码不能和原来密码相同");
+        } else {
+            user.setPassword(s);
+            if (userService.updateById(user)) {
+                return new Result(Code.UPDATE_SUCCESS, true, "密码修改成功");
+            } else {
+                return new Result(Code.UPDATE_ERROR, false, "密码修改失败，请稍后再试");
+            }
+        }
+    }
 
 }
