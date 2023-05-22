@@ -31,12 +31,6 @@ public class MovieController {
 
     @GetMapping("/{id}")
     public Result getById(@ApiParam("电影ID") @PathVariable Integer id) {
-        try {
-            int i = 1 / 0;
-        } catch (Exception e) {
-            throw new SystemException(50000, "系统出现异常", e);
-        }
-
         return new Result(Code.QUERY_SUCCESS, movieService.getById(id), "查询成功");
     }
 
