@@ -21,7 +21,7 @@ public class SessionController {
 
     @ApiOperation("根据电影查询场次")
     @GetMapping("/{movieId}")
-    public Result findById(@ApiParam("电影Id")@PathVariable Integer movieId) {
+    public Result<Session> findById(@ApiParam("电影Id")@PathVariable Integer movieId) {
         LambdaQueryWrapper<Session> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(Session::getMovieId, movieId);
         return new Result(Code.QUERY_SUCCESS, sessionService.list(wrapper), "场次查询成功");

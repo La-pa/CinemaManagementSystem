@@ -29,7 +29,7 @@ public class TicketController {
 
     @ApiOperation("查询该场次已购买的座位")
     @GetMapping("/{sessionId}")
-    public Result findBySessionId(@ApiParam("场次id")@PathVariable Integer sessionId) {
+    public Result<Seat> findBySessionId(@ApiParam("场次id")@PathVariable Integer sessionId) {
         LambdaQueryWrapper<Ticket> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(Ticket::getSessionId, sessionId);
         List<Ticket> tickets = ticketService.list(wrapper);

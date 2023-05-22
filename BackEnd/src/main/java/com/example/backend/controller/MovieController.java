@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api("电影信息")
 @RestController
 @RequestMapping("/movies")
 public class MovieController {
@@ -22,17 +23,16 @@ public class MovieController {
      */
     @ApiOperation("查看最近发布的前10部影片")
     @GetMapping
-    public Result findAll() {
+    public Result<Movie> findAll() {
         return new Result(20000, movieService.findAll(),"查询成功");
     }
 
 
     @ApiOperation("查看电影的详情")
-    @ApiResponses(@ApiResponse(code = 20000, message = "查询成功"
-            /*,response = Movie.class*/))
+    @ApiResponses(@ApiResponse(code = 30000, message = "查询成功", response = Movie.class))
     @GetMapping("/{id}")
-    public Result<Movie> getById(@ApiParam("电影ID") @PathVariable Integer id) {
-        return new Result(Code.QUERY_SUCCESS, movieService.getById(id), "查询成功");
+    public Result<Movie> getById(@ApiParam(name = "电影ID") @PathVariable Integer id) {
+        return new Result(Code.SUCCESS, movieService.getById(id), "查询成功");
     }
 
 }

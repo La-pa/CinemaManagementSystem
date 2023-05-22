@@ -1,6 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.entity.Indent;
+import com.example.backend.entity.Movie;
 import com.example.backend.entity.Ticket;
 import com.example.backend.service.IndentService;
 import io.swagger.annotations.Api;
@@ -11,9 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 
-
+@Api("订单信息")
 @RestController
-@Api(value = "订单接口")
 @RequestMapping("/indents")
 public class IndentController {
     @Autowired
@@ -23,7 +23,7 @@ public class IndentController {
     @ApiOperation("查看当前用户的订单")
 
     @GetMapping
-    public Result findAll(HttpServletRequest request) {
+    public Result<Indent> findAll(HttpServletRequest request) {
         HttpSession session = request.getSession();
         Integer useId = (Integer) session.getAttribute("userId");
 
@@ -43,7 +43,7 @@ public class IndentController {
     @ApiOperation("删除订单")
 
     @DeleteMapping("/{id}")
-    public Result deleteIndent(@PathVariable Integer id) {
+    public Result<Indent> deleteIndent(@PathVariable Integer id) {
         Indent indent = indentService.getById(id);
         if (indent == null) {
             return new Result(Code.DELETE_ERROR, "未找到该订单");
@@ -62,7 +62,7 @@ public class IndentController {
     @ApiOperation("添加订单")
 
     @PostMapping
-    public Result insertIndent(@RequestBody Ticket ticket, HttpServletRequest request) {
+    public Result<Indent> insertIndent(@RequestBody Ticket ticket, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Integer userId = (Integer) session.getAttribute("userId");
         Indent indent = new Indent(new Date(), ticket.getId(), ticket, userId);

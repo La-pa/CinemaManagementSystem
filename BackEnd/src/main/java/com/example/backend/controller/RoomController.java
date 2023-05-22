@@ -1,6 +1,8 @@
 package com.example.backend.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.backend.entity.Indent;
+import com.example.backend.entity.Room;
 import com.example.backend.entity.Session;
 import com.example.backend.service.RoomService;
 import com.example.backend.service.SessionService;
@@ -24,7 +26,7 @@ public class RoomController {
     @ApiOperation("查询放映厅名字")
 
     @GetMapping("/{id}")
-    public Result findById(@ApiParam("放映厅ID") @PathVariable Integer id) {
+    public Result<Room> findById(@ApiParam("放映厅ID") @PathVariable Integer id) {
         return new Result(Code.QUERY_SUCCESS, roomService.getById(id), "放映厅查询成功");
     }
 

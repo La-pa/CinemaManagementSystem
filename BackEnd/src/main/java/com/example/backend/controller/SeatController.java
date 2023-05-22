@@ -23,7 +23,7 @@ public class SeatController {
 
     @ApiOperation("查询放映厅座位分布情况")
     @GetMapping("/{id}")
-    public Result findByRoomId(@ApiParam("放映厅ID") @PathVariable Integer roomId) {
+    public Result<Seat> findByRoomId(@ApiParam("放映厅ID") @PathVariable Integer roomId) {
         LambdaQueryWrapper<Seat> queryWrapper = new LambdaQueryWrapper();
         queryWrapper.eq(Seat::getRoomId, roomId);
         List<Seat> seats = seatService.list(queryWrapper);
