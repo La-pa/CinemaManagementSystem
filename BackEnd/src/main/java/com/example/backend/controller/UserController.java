@@ -5,6 +5,7 @@ import com.example.backend.exception.BusinessException;
 import com.example.backend.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -62,6 +63,27 @@ public class UserController {
                 return new Result(Code.INSERT_SUCCESS, "注册成功");
             } else {
                 return new Result(Code.INSERT_ERROR, "系统繁忙，请稍后再试");
+            }
+        }
+    }
+
+    @ApiOperation(value = "修改用户密码")
+    @PutMapping("/changePassword")
+    public Result changePassword(@ApiParam("修改后密码的字符串") @RequestBody String s, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        if (session == null) {
+            return new Result(Code.QUERY_ERROR, "请重新登入");
+        }
+        Integer userId = (Integer) session.getAttribute("userId");
+        User user = userService.getById(userId);
+        if (user.getPassword().equals(s)) {
+            return new Result(Code.BUSINESS_ERROR, "修改后的密码不能和原来密码相同");
+        } else {
+            user.setPassword(s);
+            if (userService.updateById(user)) {
+                return new Result(Code.SUCCESS, "密码修改成功");
+            } else {
+                return new Result(Code.BUSINESS_ERROR, "密码修改失败，请稍后再试");
             }
         }
     }
