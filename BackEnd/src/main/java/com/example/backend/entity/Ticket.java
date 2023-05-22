@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -16,18 +17,24 @@ import lombok.Data;
 @Data
 @ApiModel("电影票")
 public class Ticket implements Serializable {
+    @ApiModelProperty("电影票ID")
     private Long id;
 
+    @ApiModelProperty("场次ID（外键）")
     private Integer sessionId;
 
+    @ApiModelProperty("场次信息")
     @TableField(exist = false)
     private Session session;
 
+    @ApiModelProperty("座位ID（外键）")
     private Integer seatId;
 
+    @ApiModelProperty("座位信息")
     @TableField(exist = false)
     private Seat seat;
 
+    @ApiModelProperty("价钱")
     private Integer price;
 
     private static final long serialVersionUID = 1L;
