@@ -28,4 +28,11 @@ public class Result<T> {
         this.msg = msg;
         this.data = data;
     }
+
+    // TODO 响应状态码
+    // TODO 丰富接口
+    // TODO 调整数据库，价格这个属性应该放在场次表中
+    // TODO 处理异常的返回值
+    // TODO
+
 }

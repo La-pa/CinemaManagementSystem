@@ -1,7 +1,6 @@
 package com.example.backend.controller;
 
 import com.example.backend.entity.Indent;
-import com.example.backend.entity.Movie;
 import com.example.backend.entity.Ticket;
 import com.example.backend.service.IndentService;
 import io.swagger.annotations.Api;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 
-@Api("订单信息")
+@Api(tags = "订单信息")
 @RestController
 @RequestMapping("/indents")
 public class IndentController {
@@ -33,9 +32,9 @@ public class IndentController {
 
         Object data = indentService.getByUserId(useId);
         if (data == null) {
-            return new Result(Code.QUERY_SUCCESS, "未查询到数据");
+            return new Result(Code.SUCCESS, "未查询到数据");
         } else {
-            return new Result(Code.QUERY_SUCCESS, data, "查询成功");
+            return new Result(Code.SUCCESS, data, "查询成功");
         }
     }
 

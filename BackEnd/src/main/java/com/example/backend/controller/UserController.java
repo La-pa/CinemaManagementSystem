@@ -3,6 +3,7 @@ package com.example.backend.controller;
 import com.example.backend.entity.User;
 import com.example.backend.exception.BusinessException;
 import com.example.backend.service.UserService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
+@Api(tags = "用户信息")
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -24,7 +26,7 @@ public class UserController {
     @ApiOperation("查询全部用户的信息")
     @GetMapping
     public Result<User> findAll() {
-        return new Result(Code.QUERY_SUCCESS, userService.list(), "查询成功");
+        return new Result(Code.SUCCESS, userService.list(), "查询成功");
     }
 
     @ApiOperation("登入业务")
@@ -38,7 +40,7 @@ public class UserController {
             System.out.println(user1);
             if (user1.getPassword().equals(user.getPassword())) {
                 session.setAttribute("userId",user.getId());
-                return new Result(Code.QUERY_SUCCESS, "登入成功");
+                return new Result(Code.SUCCESS, "登入成功");
             } else {
                 return new Result(Code.QUERY_ERROR, "密码错误");
             }
