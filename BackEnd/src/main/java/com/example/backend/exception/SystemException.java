@@ -2,6 +2,9 @@ package com.example.backend.exception;
 
 import lombok.Data;
 
+/**
+ * 系统异常
+ */
 @Data
 public class SystemException extends RuntimeException {
     private Integer code;

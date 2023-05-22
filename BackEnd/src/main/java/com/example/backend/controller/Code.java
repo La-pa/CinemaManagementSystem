@@ -13,5 +13,11 @@ public class Code {
     public static final Integer DELETE_SUCCESS = 20041;
     public static final Integer DELETE_ERROR = 20042;
 
+    public static final Integer SYSTEM_ERROR = 50001;
+    public static final Integer SYSTEM_UNKNOWN_ERROR = 59999;
+    public static final Integer BUSINESS_ERROR = 60001;
+
+
+
 
 }

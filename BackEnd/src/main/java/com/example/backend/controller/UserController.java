@@ -1,6 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.entity.User;
+import com.example.backend.exception.BusinessException;
 import com.example.backend.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class UserController {
         HttpSession session = request.getSession();
         User user1 = userService.getById(user.getId());
         if (user1 == null) {
-            return new Result(Code.QUERY_ERROR, "账号不存在");
+            throw new BusinessException(Code.BUSINESS_ERROR, "账号不存在");
         } else {
             System.out.println(user1);
             if (user1.getPassword().equals(user.getPassword())) {
