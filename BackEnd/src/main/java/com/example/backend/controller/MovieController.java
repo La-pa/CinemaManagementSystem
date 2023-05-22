@@ -30,6 +30,7 @@ public class MovieController {
 
     @GetMapping("/{id}")
     public Result getById(@ApiParam("电影ID") @PathVariable Integer id) {
+        int i = 1 / 0;
         return new Result(Code.QUERY_SUCCESS, movieService.getById(id), "查询成功");
     }
 
