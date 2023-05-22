@@ -29,6 +29,14 @@ public class Result<T> {
         this.data = data;
     }
 
+    public static Result success() {
+        return new Result<>(Code.SUCCESS, "操作成功");
+    }
+    public static Result success(Object data) {
+        return new Result<>(Code.SUCCESS, data,"操作成功");
+    }
+
+
     // TODO 响应状态码
     // TODO 丰富接口
     // TODO 调整数据库，价格这个属性应该放在场次表中

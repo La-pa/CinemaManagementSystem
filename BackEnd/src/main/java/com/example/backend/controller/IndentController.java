@@ -2,14 +2,18 @@ package com.example.backend.controller;
 
 import com.example.backend.entity.Indent;
 import com.example.backend.entity.Ticket;
+import com.example.backend.exception.BusinessException;
 import com.example.backend.service.IndentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 
 @Api(tags = "订单信息")
 @RestController
@@ -20,51 +24,58 @@ public class IndentController {
 
 
     @ApiOperation("查看当前用户的订单")
-
+    @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
+            @ApiResponse(code = 60101, message = "数据不存在"),
+            @ApiResponse(code = 60011, message = "用户未登入")})
     @GetMapping
     public Result<Indent> findAll(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        Integer useId = (Integer) session.getAttribute("userId");
-
-        if (useId == null) {
-            return new Result(Code.QUERY_ERROR, "用户未登录");
+        Integer userId = (Integer) session.getAttribute("userId");
+        if (userId == null) {
+            throw new BusinessException(Code.BUSINESS_ERROR_USER_NOT_LOGIN, "用户未登入");
         }
-
-        Object data = indentService.getByUserId(useId);
-        if (data == null) {
-            return new Result(Code.SUCCESS, "未查询到数据");
+        List<Indent> indents = indentService.getByUserId(userId);
+        if (indents == null) {
+            throw new BusinessException(Code.BUSINESS_ERROR_DATA_NOT_EXIST, "数据不存在");
         } else {
-            return new Result(Code.SUCCESS, data, "查询成功");
+            return Result.success(indents);
         }
     }
 
 
     @ApiOperation("删除订单")
-
+    @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
+            @ApiResponse(code = 60101, message = "数据不存在")})
     @DeleteMapping("/{id}")
-    public Result<Indent> deleteIndent(@PathVariable Integer id) {
+    public Result<Boolean> deleteIndent(@PathVariable Integer id) {
         Indent indent = indentService.getById(id);
-        if (indent == null) {
-            return new Result(Code.DELETE_ERROR, "未找到该订单");
-        }
-
-        boolean flag = indentService.deleteById(id);
-        if (flag) {
-            return new Result(Code.DELETE_SUCCESS, true,"订单删除成功");
+        if (indentService.deleteById(id)) {
+            return Result.success();
         } else {
-            return new Result(Code.DELETE_ERROR, false,"订单删除失败");
+            throw  new BusinessException(Code.BUSINESS_ERROR_DATA_NOT_EXIST, "数据不存在");
         }
     }
 
 
 
     @ApiOperation("添加订单")
-
+    @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
+            @ApiResponse(code = 60101, message = "数据不存在"),
+            @ApiResponse(code = 60011, message = "用户未登入"),
+            @ApiResponse(code = 20022, message = "数据插入失败")})
     @PostMapping
     public Result<Indent> insertIndent(@RequestBody Ticket ticket, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Integer userId = (Integer) session.getAttribute("userId");
+        if (userId == null) {
+            throw new BusinessException(Code.BUSINESS_ERROR_USER_NOT_LOGIN, "用户未登入");
+        }
         Indent indent = new Indent(new Date(), ticket.getId(), ticket, userId);
-        return new Result(Code.INSERT_SUCCESS, indentService.addDate(indent), "订单添加成功");
+        if (indentService.addDate(indent)) {
+            return Result.success();
+        } else {
+            throw new BusinessException(Code.INSERT_ERROR, "数据插入失败");
+        }
+
     }
 }

@@ -10,7 +10,7 @@ public class ProjectExceptionAdvice {
     @ExceptionHandler(SystemException.class)
     public Result doSystemException(SystemException ex) {
         System.out.println("系统出现异常");
-        return new Result(ex.getCode(), ex.getMessage());
+        return new Result(ex.getCode(),ex.getMessage());
     }
 
     @ExceptionHandler(BusinessException.class)

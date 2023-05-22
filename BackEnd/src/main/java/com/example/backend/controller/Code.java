@@ -14,7 +14,19 @@ public class Code {
 
     public static final Integer SYSTEM_ERROR = 50001;
     public static final Integer SYSTEM_UNKNOWN_ERROR = 59999;
+
+
     public static final Integer BUSINESS_ERROR = 60001;
+
+    /**
+     * 用户未登入
+     */
+    public static final Integer BUSINESS_ERROR_USER_NOT_LOGIN = 60011;
+
+    /**
+     * 数据不存在
+     */
+    public static final Integer BUSINESS_ERROR_DATA_NOT_EXIST = 60101;
 
 
 
