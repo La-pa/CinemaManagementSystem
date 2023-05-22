@@ -9,6 +9,8 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/cinema
     username: root
-    password: "00000000"
+#    password: "00000000"
+    password: "Jiang12345678"
+
 
 

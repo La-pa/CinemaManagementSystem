@@ -12,6 +12,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class Swagger2Config {
+//    http://localhost:9090/swagger-ui.html
     @Bean
     public Docket docket() {
         // 创建一个 swagger 的 bean 实例

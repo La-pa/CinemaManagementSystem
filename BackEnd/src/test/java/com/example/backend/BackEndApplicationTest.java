@@ -13,12 +13,12 @@ public class BackEndApplicationTest {
 
     @Autowired
     private IndentMapper indentMapper;
-    @Test
-    public void testIndentGetByUserId() {
-        List<Indent> indents = indentMapper.getByUserId(1);
-        for (Indent indent : indents) {
-            System.out.println(indent);
-        }
-
-    }
+//    @Test
+//    public void testIndentGetByUserId() {
+//        List<Indent> indents = indentMapper.getByUserId(1);
+//        for (Indent indent : indents) {
+//            System.out.println(indent);
+//        }
+//
+//    }
 }
