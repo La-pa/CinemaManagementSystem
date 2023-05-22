@@ -1,6 +1,8 @@
 package com.example.backend.controller;
 
 public class Code {
+
+    public static final Integer SUCCESS = 20000;
     public static final Integer QUERY_SUCCESS = 20011;
     public static final Integer QUERY_ERROR = 20012;
 
