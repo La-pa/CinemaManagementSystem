@@ -36,10 +36,4 @@ public class Result<T> {
         return new Result<>(Code.SUCCESS, data,"操作成功");
     }
 
-
-    // TODO 响应状态码
-    // TODO 丰富接口
-    // TODO 调整数据库，价格这个属性应该放在场次表中
-    // TODO
-
 }

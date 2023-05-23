@@ -45,4 +45,16 @@ public class TicketController {
         return Result.success(seats);
     }
 
+    @ApiOperation("根据电影票ID查询电影票信息")
+    @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
+            @ApiResponse(code = 60101, message = "数据不存在")})
+    @GetMapping("/{id}")
+    public Result<Seat> findById(@ApiParam(name = "id", value = "电影票id")@PathVariable Integer id) {
+        Ticket ticket = ticketService.getById(id);
+        if (ticket == null) {
+            throw new BusinessException(Code.BUSINESS_ERROR_DATA_NOT_EXIST, "数据不存在");
+        }
+        return Result.success(ticket);
+    }
+
 }

@@ -35,4 +35,17 @@ public class SeatController {
             return Result.success(seats);
         }
     }
+
+    @ApiOperation("查询所有座位")
+    @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
+            @ApiResponse(code = 60101, message = "数据不存在")})
+    @GetMapping
+    public Result<Seat> findAll() {
+        List<Seat> seats = seatService.list();
+        if (seats == null) {
+            throw new BusinessException(Code.BUSINESS_ERROR_DATA_NOT_EXIST, "数据不存在");
+        } else {
+            return Result.success(seats);
+        }
+    }
 }

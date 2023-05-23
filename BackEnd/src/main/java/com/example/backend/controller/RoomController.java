@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 @Api(tags = "放映厅信息")
 @RestController
@@ -29,6 +31,19 @@ public class RoomController {
             throw new BusinessException(Code.BUSINESS_ERROR_DATA_NOT_EXIST, "数据不存在");
         } else {
             return Result.success(room);
+        }
+    }
+
+    @ApiOperation("查询所有放映厅信息")
+    @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
+            @ApiResponse(code = 60101, message = "数据不存在")})
+    @GetMapping
+    public Result<Room> findAll() {
+        List<Room> rooms = roomService.list();
+        if (rooms == null) {
+            throw new BusinessException(Code.BUSINESS_ERROR_DATA_NOT_EXIST, "数据不存在");
+        } else {
+            return Result.success(rooms);
         }
     }
 

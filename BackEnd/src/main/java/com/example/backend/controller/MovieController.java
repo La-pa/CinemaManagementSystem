@@ -22,9 +22,21 @@ public class MovieController {
     @ApiOperation("查看最近发布的前10部影片")
     @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
             @ApiResponse(code = 60101, message = "数据不存在")})
+    @GetMapping("/new")
+    public Result<Movie> getNew() {
+        List<Movie> movies = movieService.findAll();
+        if (movies == null) {
+            throw new BusinessException(Code.BUSINESS_ERROR_DATA_NOT_EXIST, "数据不存在");
+        }
+        return Result.success(movies);
+    }
+
+    @ApiOperation("查看所有影片")
+    @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
+            @ApiResponse(code = 60101, message = "数据不存在")})
     @GetMapping
     public Result<Movie> getAll() {
-        List<Movie> movies = movieService.findAll();
+        List<Movie> movies = movieService.list();
         if (movies == null) {
             throw new BusinessException(Code.BUSINESS_ERROR_DATA_NOT_EXIST, "数据不存在");
         }

@@ -26,6 +26,7 @@ CREATE TABLE session (
     start_time DATETIME,
     movie_id INT,
     room_id INT,
+    price INT,
     FOREIGN KEY (movie_id) REFERENCES movie(id),
     FOREIGN KEY (room_id) REFERENCES room(id)
 );
@@ -42,7 +43,6 @@ CREATE TABLE ticket (
     id BIGINT PRIMARY KEY,
     session_id INT,
     seat_id INT,
-    price INT,
     FOREIGN KEY (session_id) REFERENCES session(id),
     FOREIGN KEY (seat_id) REFERENCES seat(id)
 );
