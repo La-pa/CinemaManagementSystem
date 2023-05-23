@@ -24,6 +24,16 @@ public class Code {
     public static final Integer BUSINESS_ERROR_USER_NOT_LOGIN = 60011;
 
     /**
+     * 用户密码错误
+     */
+    public static final Integer BUSINESS_ERROR_USER_PASSWORD_ERROR = 60012;
+
+    /**
+     * 用户账号存在
+     */
+    public static final Integer BUSINESS_ERROR_USER_ACCOUNT_EXISTS = 60013;
+
+    /**
      * 数据不存在
      */
     public static final Integer BUSINESS_ERROR_DATA_NOT_EXIST = 60101;

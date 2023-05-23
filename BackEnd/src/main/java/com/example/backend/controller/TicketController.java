@@ -3,11 +3,10 @@ package com.example.backend.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.backend.entity.Seat;
 import com.example.backend.entity.Ticket;
+import com.example.backend.exception.BusinessException;
 import com.example.backend.service.SeatService;
 import com.example.backend.service.TicketService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +27,8 @@ public class TicketController {
     private SeatService seatService;
 
     @ApiOperation("查询该场次已购买的座位")
+    @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
+            @ApiResponse(code = 60101, message = "数据不存在")})
     @GetMapping("/{sessionId}")
     public Result<Seat> findBySessionId(@ApiParam(name = "sessionId", value = "场次id")@PathVariable Integer sessionId) {
         LambdaQueryWrapper<Ticket> wrapper = new LambdaQueryWrapper<>();
@@ -38,7 +39,10 @@ public class TicketController {
             Seat seat = seatService.getById(ticket.getSeatId());
             seats.add(seat);
         }
-        return new Result(Code.SUCCESS, seats, "座位查询成功");
+        if (seats == null) {
+            throw new BusinessException(Code.BUSINESS_ERROR_DATA_NOT_EXIST, "数据不存在");
+        }
+        return Result.success(seats);
     }
 
 }

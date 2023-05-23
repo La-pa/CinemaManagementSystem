@@ -3,14 +3,13 @@ package com.example.backend.controller;
 import com.example.backend.entity.User;
 import com.example.backend.exception.BusinessException;
 import com.example.backend.service.UserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 @Api(tags = "用户信息")
@@ -25,44 +24,55 @@ public class UserController {
      * @return
      */
     @ApiOperation("查询全部用户的信息")
+    @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
+            @ApiResponse(code = 60101, message = "数据不存在")})
     @GetMapping
     public Result<User> findAll() {
-        return new Result(Code.SUCCESS, userService.list(), "查询成功");
+        List<User> users = userService.list();
+        if (users == null) {
+            throw new BusinessException(Code.BUSINESS_ERROR_DATA_NOT_EXIST, "数据不存在");
+        }
+        return Result.success(users);
     }
 
     @ApiOperation("登入业务")
+    @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
+            @ApiResponse(code = 60101, message = "数据不存在"),
+            @ApiResponse(code = 60012, message = "用户密码错误")})
     @PostMapping("/login")
     public Result<User> login(@RequestBody User user, HttpServletRequest request) {
         HttpSession session = request.getSession();
         User user1 = userService.getById(user.getId());
         if (user1 == null) {
-            throw new BusinessException(Code.BUSINESS_ERROR, "账号不存在");
+            throw new BusinessException(Code.BUSINESS_ERROR_DATA_NOT_EXIST, "数据不存在");
         } else {
             System.out.println(user1);
             if (user1.getPassword().equals(user.getPassword())) {
                 session.setAttribute("userId",user.getId());
-                return new Result(Code.SUCCESS, "登入成功");
+                return Result.success();
             } else {
-                return new Result(Code.QUERY_ERROR, "密码错误");
+                throw  new BusinessException(Code.BUSINESS_ERROR_USER_PASSWORD_ERROR, "用户密码错误");
             }
         }
     }
 
 
     @ApiOperation("注册业务")
+    @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
+            @ApiResponse(code = 20022, message = "数据保存失败"),
+            @ApiResponse(code = 60013, message = "用户账号已存在")})
     @PostMapping("/register")
     public Result<User> register(@RequestBody User user, HttpServletRequest request) {
         User user1 = userService.getById(user.getId());
         HttpSession session = request.getSession();
         if (user1 != null) {
-            return new Result(Code.INSERT_ERROR, "用户已存在");
+            throw  new BusinessException(Code.BUSINESS_ERROR_USER_ACCOUNT_EXISTS, "用户账号已存在");
         } else {
-            boolean flag = userService.save(user);
-            if (flag) {
+            if (userService.save(user)) {
                 session.setAttribute("userId",user.getId());
-                return new Result(Code.INSERT_SUCCESS, "注册成功");
+                return Result.success();
             } else {
-                return new Result(Code.INSERT_ERROR, "系统繁忙，请稍后再试");
+                throw  new BusinessException(Code.INSERT_ERROR, "数据保存失败");
             }
         }
     }

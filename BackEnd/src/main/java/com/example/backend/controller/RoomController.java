@@ -1,10 +1,9 @@
 package com.example.backend.controller;
 
 import com.example.backend.entity.Room;
+import com.example.backend.exception.BusinessException;
 import com.example.backend.service.RoomService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,10 +20,16 @@ public class RoomController {
 
 
     @ApiOperation("查询放映厅名字")
-
+    @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
+            @ApiResponse(code = 60101, message = "数据不存在")})
     @GetMapping("/{id}")
     public Result<Room> findById(@ApiParam(name = "id", value = "放映厅ID") @PathVariable Integer id) {
-        return new Result(Code.SUCCESS, roomService.getById(id), "放映厅查询成功");
+        Room room = roomService.getById(id);
+        if (room == null) {
+            throw new BusinessException(Code.BUSINESS_ERROR_DATA_NOT_EXIST, "数据不存在");
+        } else {
+            return Result.success(room);
+        }
     }
 
 }
