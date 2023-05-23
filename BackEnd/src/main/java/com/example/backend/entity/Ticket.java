@@ -34,8 +34,7 @@ public class Ticket implements Serializable {
     @TableField(exist = false)
     private Seat seat;
 
-    @ApiModelProperty("价钱")
-    private Integer price;
+
 
     private static final long serialVersionUID = 1L;
 }

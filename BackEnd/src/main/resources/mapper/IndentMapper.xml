@@ -22,9 +22,9 @@
         <result property="userId" column="user_id" jdbcType="INTEGER"/>
         <association property="ticket" javaType="com.example.backend.entity.Ticket">
             <id property="id" column="id" jdbcType="BIGINT"/>
-            <result property="price" column="price" jdbcType="INTEGER"/>
             <association property="session" javaType="com.example.backend.entity.Session">
                 <result property="startTime" column="start_time" jdbcType="TIMESTAMP"/>
+                <result property="price" column="price" jdbcType="INTEGER"/>
                 <association property="movie" javaType="com.example.backend.entity.Movie">
                     <result property="title" column="title" jdbcType="VARCHAR"/>
                     <result property="genre" column="genre" jdbcType="VARCHAR"/>

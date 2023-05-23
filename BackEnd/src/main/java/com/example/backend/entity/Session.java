@@ -38,5 +38,8 @@ public class Session implements Serializable {
     @TableField(exist = false)
     private Room room;
 
+    @ApiModelProperty("价格")
+    private Integer price;
+
     private static final long serialVersionUID = 1L;
 }

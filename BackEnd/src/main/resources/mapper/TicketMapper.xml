@@ -8,7 +8,6 @@
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="sessionId" column="session_id" jdbcType="INTEGER"/>
             <result property="seatId" column="seat_id" jdbcType="INTEGER"/>
-            <result property="price" column="price" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
