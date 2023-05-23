@@ -2,7 +2,7 @@ package com.example.backend.controller;
 
 public class Code {
 
-    public static final Integer SUCCESS = 200000;
+    public static final Integer SUCCESS = 20000;
     public static final Integer QUERY_ERROR = 20012;
 
     public static final Integer INSERT_SUCCESS = 20021;

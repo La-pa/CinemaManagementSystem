@@ -16,10 +16,11 @@ public class Swagger2Config {
     @Bean
     public Docket docket() {
         // 创建一个 swagger 的 bean 实例
+
         return new Docket(DocumentationType.SWAGGER_2)
+                .useDefaultResponseMessages(false)
                 // 配置基本信息
-                .apiInfo(apiInfo())
-                ;
+                .apiInfo(apiInfo());
     }
 
     // 基本信息设置

@@ -39,8 +39,8 @@ public class UserController {
     @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
             @ApiResponse(code = 60101, message = "数据不存在"),
             @ApiResponse(code = 60012, message = "用户密码错误")})
-    @PostMapping("/login")
-    public Result<User> login(@RequestBody User user, HttpServletRequest request) {
+    @GetMapping("/login")
+    public Result login(@RequestBody User user, HttpServletRequest request) {
         HttpSession session = request.getSession();
         User user1 = userService.getById(user.getId());
         if (user1 == null) {
@@ -62,7 +62,7 @@ public class UserController {
             @ApiResponse(code = 20022, message = "数据保存失败"),
             @ApiResponse(code = 60013, message = "用户账号已存在")})
     @PostMapping("/register")
-    public Result<User> register(@RequestBody User user, HttpServletRequest request) {
+    public Result register(@RequestBody User user, HttpServletRequest request) {
         User user1 = userService.getById(user.getId());
         HttpSession session = request.getSession();
         if (user1 != null) {
