@@ -64,7 +64,7 @@ public class IndentController {
             @ApiResponse(code = 60011, message = "用户未登入"),
             @ApiResponse(code = 20022, message = "数据插入失败")})
     @PostMapping
-    public Result<Indent> insertIndent(@RequestBody Ticket ticket, HttpServletRequest request) {
+    public Result insertIndent(@RequestBody Ticket ticket, HttpServletRequest request) {
         HttpSession session = request.getSession();
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
