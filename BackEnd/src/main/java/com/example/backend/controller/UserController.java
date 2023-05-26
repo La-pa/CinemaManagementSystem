@@ -14,6 +14,7 @@ import java.util.List;
 
 @Api(tags = "用户信息")
 @RestController
+@CrossOrigin
 @RequestMapping("/users")
 public class UserController {
     @Autowired
