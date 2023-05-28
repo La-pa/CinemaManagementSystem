@@ -20,27 +20,19 @@ import java.util.List;
 @SpringBootTest
 public class BackEndApplicationTest {
 
+
     @Autowired
     private TicketService ticketService;
-
-    @Autowired
-    private SeatService seatService;
-
-    @Autowired
-    private IndentMapper indentMapper;
 //    @Test
 //    public void testTicketGetBySessionId() {
-//        int sessionId = 1;
+//        Ticket ticket = new Ticket();
+//        ticket.setSessionId(3);
+//        ticket.setSeatId(1);
 //        LambdaQueryWrapper<Ticket> wrapper = new LambdaQueryWrapper<>();
-//        wrapper.eq(Ticket::getSessionId, sessionId);
+//        wrapper.eq(Ticket::getSessionId, ticket.getSessionId())
+//                .eq(Ticket::getSeatId, ticket.getSeatId());
 //        List<Ticket> tickets = ticketService.list(wrapper);
 //        System.out.println(tickets);
-//        List<Seat> seats = new ArrayList<Seat>();
-//        for (Ticket ticket: tickets) {
-//            Seat seat = seatService.getById(ticket.getSeatId());
-//            System.out.println(seat);
-//            seats.add(seat);
-//        }
-//        System.out.println(seats);
+//
 //    }
 }

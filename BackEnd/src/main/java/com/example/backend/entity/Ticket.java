@@ -18,6 +18,7 @@ import lombok.Data;
 @ApiModel("电影票")
 public class Ticket implements Serializable {
     @ApiModelProperty("电影票ID")
+//    @TableId(type = IdType.AUTO)
     private Long id;
 
     @ApiModelProperty("场次ID（外键）")
@@ -33,8 +34,6 @@ public class Ticket implements Serializable {
     @ApiModelProperty("座位信息")
     @TableField(exist = false)
     private Seat seat;
-
-
 
     private static final long serialVersionUID = 1L;
 }

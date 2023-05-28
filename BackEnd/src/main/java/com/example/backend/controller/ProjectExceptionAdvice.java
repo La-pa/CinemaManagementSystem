@@ -16,6 +16,7 @@ public class ProjectExceptionAdvice {
     @ExceptionHandler(BusinessException.class)
     public Result doSystemException(BusinessException ex) {
         System.out.println("出现业务异常");
+        System.out.println("=> "+ ex.getMessage());
         return new Result(ex.getCode(), ex.getMessage());
     }
 
