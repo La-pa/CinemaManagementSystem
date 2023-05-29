@@ -37,7 +37,14 @@
         }).catch((error) => {
             // alert("nihao")
             console.log(error)
-        })
+        }),
+        this.$http.get("/indents").then((response) => {
+
+          console.log(response.data)
+          }).catch((error) => {
+          // alert("nihao")
+          console.log(error)
+          })
       }
     }
   </script>

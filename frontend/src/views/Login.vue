@@ -103,7 +103,7 @@
         };
         this.$http.post("/users/login", data)
             .then((response) => {
-              if (response.data.msg == "登入成功") {
+              if (response.data.code == 20000) {
                 console.log("登入成功");
                 this.$message({
                   title: '成功',
@@ -129,7 +129,7 @@
         };
         this.$http.post("/users/register", data)
             .then((response) => {
-              if (response.data) {
+              if (response.data.code == 20000) {
                 console.log("注册成功");
                 this.$notify({
                   title: '成功',

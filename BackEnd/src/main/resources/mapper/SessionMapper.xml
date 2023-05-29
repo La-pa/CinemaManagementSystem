@@ -9,7 +9,7 @@
             <result property="startTime" column="start_time" jdbcType="TIMESTAMP"/>
             <result property="movieId" column="movie_id" jdbcType="BIGINT"/>
             <result property="roomId" column="room_id" jdbcType="BIGINT"/>
-            <result property="price" column="price" jdbcType="BIGINT"/>
+            <result property="price" column="price" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">

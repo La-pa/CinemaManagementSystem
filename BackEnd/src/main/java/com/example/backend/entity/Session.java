@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.lang.reflect.Type;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -26,10 +27,10 @@ public class Session implements Serializable {
 
     @ApiModelProperty("场次开始时间")
     @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date startTime;
+    private LocalDateTime startTime;
 
     @ApiModelProperty("电影ID（外键）")
-    private Integer movieId;
+    private Long movieId;
 
     @ApiModelProperty("电影信息")
     @TableField(exist = false)
@@ -43,7 +44,7 @@ public class Session implements Serializable {
     private Room room;
 
     @ApiModelProperty("价格")
-    private Long price;
+    private Integer price;
 
     private static final long serialVersionUID = 1L;
 }

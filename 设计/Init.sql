@@ -29,34 +29,122 @@ VALUES (1, 'Room 1'),
        (3, 'Room 3');
 
 -- 向 user 表插入示例数据
-INSERT INTO user (id, username, password)
-VALUES (1, 'user1', 'password1'),
-       (2, 'user2', 'password2'),
-       (3, 'user3', 'password3');
+INSERT INTO cinema.user (id, username, password) VALUES (1, 'user1', 'password1');
+INSERT INTO cinema.user (id, username, password) VALUES (2, 'user2', 'password2');
+INSERT INTO cinema.user (id, username, password) VALUES (3, 'user3', 'password3');
+INSERT INTO cinema.user (id, username, password) VALUES (111, '张三', '123456');
+INSERT INTO cinema.user (id, username, password) VALUES (888, '888', '888');
+
 
 -- 向 session 表插入示例数据
-INSERT INTO session (id, start_time, movie_id, room_id, price)
-VALUES (1, '2023-01-01 10:00:00', 1, 1, 100),
-       (2, '2023-02-01 14:00:00', 2, 2, 120),
-       (3, '2023-03-01 18:00:00', 3, 3, 80);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (1, '2023-01-01 10:00:00', 1, 1, 100);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (2, '2023-02-01 14:00:00', 2, 2, 120);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (3, '2023-03-01 18:00:00', 3, 3, 80);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (4, '2023-05-24 18:30:00', 4, 2, 65);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (5, '2023-05-25 19:15:00', 5, 3, 70);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (6, '2023-05-25 21:30:00', 6, 3, 75);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (7, '2023-05-26 16:45:00', 7, 1, 50);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (8, '2023-05-26 19:00:00', 8, 1, 60);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (9, '2023-05-27 20:30:00', 9, 2, 55);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (10, '2023-05-27 22:45:00', 10, 2, 65);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (11, '2023-05-28 17:30:00', 11, 3, 70);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (12, '2023-05-28 20:00:00', 12, 3, 75);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (13, '2023-05-29 14:15:00', 13, 1, 50);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (14, '2023-05-29 17:00:00', 14, 1, 60);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (15, '2023-05-30 19:45:00', 15, 2, 55);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (16, '2023-05-30 22:00:00', 16, 2, 65);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (17, '2023-05-31 16:30:00', 17, 3, 70);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (18, '2023-05-31 19:15:00', 18, 3, 75);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (19, '2023-06-01 15:45:00', 19, 1, 50);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (20, '2023-06-01 18:30:00', 20, 1, 60);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (21, '2023-06-02 19:30:00', 1, 2, 55);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (22, '2023-06-02 22:00:00', 1, 3, 60);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (23, '2023-06-03 15:30:00', 2, 1, 50);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (24, '2023-06-03 18:00:00', 2, 3, 65);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (25, '2023-06-04 20:15:00', 3, 2, 60);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (26, '2023-06-04 22:30:00', 3, 3, 65);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (27, '2023-06-05 16:45:00', 4, 1, 55);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (28, '2023-06-05 19:15:00', 4, 2, 60);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (29, '2023-06-06 20:30:00', 5, 1, 50);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (30, '2023-06-06 22:45:00', 5, 2, 55);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (31, '2023-06-07 17:15:00', 6, 2, 60);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (32, '2023-06-07 20:00:00', 6, 3, 65);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (33, '2023-06-08 14:30:00', 7, 1, 50);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (34, '2023-06-08 17:00:00', 7, 3, 65);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (35, '2023-06-09 19:45:00', 8, 2, 55);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (36, '2023-06-09 22:15:00', 8, 3, 60);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (37, '2023-06-10 16:30:00', 9, 1, 50);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (38, '2023-06-10 19:00:00', 9, 2, 55);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (39, '2023-06-11 20:45:00', 10, 1, 50);
+INSERT INTO cinema.session (id, start_time, movie_id, room_id, price) VALUES (40, '2023-06-11 23:00:00', 10, 2, 55);
+
 
 -- 向 seat 表插入示例数据
-INSERT INTO seat (id, seat_row, seat_col, room_id)
-VALUES (1, 'A', 1, 1),
-       (2, 'A', 2, 1),
-       (3, 'B', 1, 2),
-       (4, 'B', 2, 2),
-       (5, 'C', 1, 3),
-       (6, 'C', 2, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (1, 'A', 1, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (2, 'A', 2, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (3, 'A', 3, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (4, 'A', 4, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (5, 'B', 1, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (6, 'B', 2, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (7, 'B', 3, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (8, 'B', 4, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (9, 'C', 1, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (10, 'C', 2, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (11, 'C', 3, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (12, 'C', 4, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (13, 'D', 1, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (14, 'D', 2, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (15, 'D', 3, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (16, 'D', 4, 1);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (17, 'A', 1, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (18, 'A', 2, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (19, 'A', 3, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (20, 'A', 4, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (21, 'B', 1, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (22, 'B', 2, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (23, 'B', 3, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (24, 'B', 4, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (25, 'C', 1, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (26, 'C', 2, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (27, 'C', 3, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (28, 'C', 4, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (29, 'D', 1, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (30, 'D', 2, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (31, 'D', 3, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (32, 'D', 4, 2);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (33, 'A', 1, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (34, 'A', 2, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (35, 'A', 3, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (36, 'A', 4, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (37, 'B', 1, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (38, 'B', 2, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (39, 'B', 3, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (40, 'B', 4, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (41, 'C', 1, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (42, 'C', 2, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (43, 'C', 3, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (44, 'C', 4, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (45, 'D', 1, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (46, 'D', 2, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (47, 'D', 3, 3);
+INSERT INTO cinema.seat (id, seat_row, seat_col, room_id) VALUES (48, 'D', 4, 3);
+
 
 -- 向 ticket 表插入示例数据
-INSERT INTO ticket (id, session_id, seat_id)
-VALUES (1, 1, 1),
-       (2, 2, 3),
-       (3, 3, 6);
+INSERT INTO cinema.ticket (id, session_id, seat_id) VALUES (1, 1, 1);
+INSERT INTO cinema.ticket (id, session_id, seat_id) VALUES (2, 2, 3);
+INSERT INTO cinema.ticket (id, session_id, seat_id) VALUES (3, 3, 6);
+INSERT INTO cinema.ticket (id, session_id, seat_id) VALUES (4, 15, 17);
+INSERT INTO cinema.ticket (id, session_id, seat_id) VALUES (5, 15, 18);
+INSERT INTO cinema.ticket (id, session_id, seat_id) VALUES (6, 15, 19);
+INSERT INTO cinema.ticket (id, session_id, seat_id) VALUES (7, 15, 20);
+
 
 -- 向 indent 表插入示例数据
-INSERT INTO indent (id, purchase_time, ticket_id, user_id)
-VALUES (1, '2023-01-01 09:30:00', 1, 1),
-       (2, '2023-02-01 13:45:00', 2, 2),
-       (3, '2023-03-01 17:30:00', 3, 3);
+INSERT INTO cinema.indent (id, purchase_time, ticket_id, user_id) VALUES (1, '2023-01-01 09:30:00', 1, 1);
+INSERT INTO cinema.indent (id, purchase_time, ticket_id, user_id) VALUES (2, '2023-02-01 13:45:00', 2, 2);
+INSERT INTO cinema.indent (id, purchase_time, ticket_id, user_id) VALUES (3, '2023-03-01 17:30:00', 3, 3);
+INSERT INTO cinema.indent (id, purchase_time, ticket_id, user_id) VALUES (4, '2023-05-28 17:22:10', 4, 111);
+INSERT INTO cinema.indent (id, purchase_time, ticket_id, user_id) VALUES (5, '2023-05-28 18:22:10', 5, 111);
+INSERT INTO cinema.indent (id, purchase_time, ticket_id, user_id) VALUES (6, '2023-05-28 19:22:10', 6, 111);
+INSERT INTO cinema.indent (id, purchase_time, ticket_id, user_id) VALUES (7, '2023-05-28 17:22:10', 7, 111);
