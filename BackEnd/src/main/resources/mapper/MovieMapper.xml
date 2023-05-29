@@ -5,7 +5,7 @@
 <mapper namespace="com.example.backend.mapper.MovieMapper">
 
     <resultMap id="BaseResultMap" type="com.example.backend.entity.Movie">
-            <id property="id" column="id" jdbcType="INTEGER"/>
+            <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="title" column="title" jdbcType="VARCHAR"/>
             <result property="genre" column="genre" jdbcType="VARCHAR"/>
             <result property="director" column="director" jdbcType="VARCHAR"/>

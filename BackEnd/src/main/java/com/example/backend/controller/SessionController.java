@@ -37,9 +37,8 @@ public class SessionController {
     @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
             @ApiResponse(code = 60101, message = "数据不存在"),
             @ApiResponse(code = 20022, message = "数据插入失败")})
-    @PostMapping ("")
+    @PostMapping
     public Result<Session> insertSession(@ApiParam(name = "session", value = "场次")@RequestBody Session session) {
-        session.setId(null);
         if (sessionService.save(session)) {
             throw new BusinessException(Code.INSERT_ERROR, "数据插入失败");
         }

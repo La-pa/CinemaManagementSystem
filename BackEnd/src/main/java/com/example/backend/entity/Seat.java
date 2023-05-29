@@ -1,5 +1,7 @@
 package com.example.backend.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 
@@ -15,7 +17,8 @@ import lombok.Data;
 @ApiModel("座位")
 public class Seat implements Serializable {
     @ApiModelProperty("座位ID")
-    private Integer id;
+    @TableId(type = IdType.AUTO)
+    private Long id;
 
     @ApiModelProperty("座位的行坐标")
     private String seatRow;

@@ -19,7 +19,8 @@ import lombok.Data;
 @ApiModel("电影")
 public class Movie implements Serializable {
     @ApiModelProperty("电影ID")
-    private Integer id;
+    @TableId(type = IdType.AUTO)
+    private Long id;
 
     @ApiModelProperty("电影名")
     private String title;

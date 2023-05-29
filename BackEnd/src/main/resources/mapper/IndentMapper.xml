@@ -8,7 +8,7 @@
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="purchaseTime" column="purchase_time" jdbcType="TIMESTAMP"/>
             <result property="ticketId" column="ticket_id" jdbcType="BIGINT"/>
-            <result property="userId" column="user_id" jdbcType="INTEGER"/>
+            <result property="userId" column="user_id" jdbcType="BIGINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -19,7 +19,7 @@
         <id property="id" column="id" jdbcType="BIGINT"/>
         <result property="purchaseTime" column="purchase_time" jdbcType="DATE"/>
         <result property="ticketId" column="ticket_id" jdbcType="BIGINT"/>
-        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
         <association property="ticket" javaType="com.example.backend.entity.Ticket">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <association property="session" javaType="com.example.backend.entity.Session">
@@ -39,7 +39,7 @@
             </association>
         </association>
     </resultMap>
-    <select id="getByUserId" resultMap="IndentDetails" parameterType="INT">
+    <select id="getByUserId" resultMap="IndentDetails" parameterType="LONG">
         SELECT *
         FROM indent
                  INNER JOIN ticket ON indent.ticket_id = ticket.id

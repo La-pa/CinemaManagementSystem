@@ -2,6 +2,7 @@ package com.example.backend.mapper;
 
 import com.example.backend.entity.Indent;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import io.swagger.models.auth.In;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 */
 public interface IndentMapper extends BaseMapper<Indent> {
 
-    List<Indent> getByUserId(Integer userId);
+    List<Indent> getByUserId(Long userId);
 }
 
 

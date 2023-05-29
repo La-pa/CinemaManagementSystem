@@ -27,17 +27,16 @@ public class IndentServiceImpl extends ServiceImpl<IndentMapper, Indent>
     TicketService ticketService;
 
     @Override
-    public List<Indent> getByUserId(Integer userId) {
+    public List<Indent> getByUserId(Long userId) {
         return indentMapper.getByUserId(userId);
     }
 
-    public boolean deleteById(Integer id) {
+    public boolean deleteById(Long id) {
         Indent indent = this.getById(id);
+        System.out.println(indent);
         Long ticketId = indent.getTicketId();
-        boolean i = ticketService.removeById(ticketId);
-        if (i == false) return false;
-        boolean b = this.removeById(id);
-        return b;
+        if ( this.removeById(id)== false) return false;
+        return ticketService.removeById(ticketId);
     }
 
     @Override

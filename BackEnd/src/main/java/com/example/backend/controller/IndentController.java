@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class IndentController {
     @GetMapping
     public Result<Indent> findAll(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        Integer userId = (Integer) session.getAttribute("userId");
+        Long userId = (Long) session.getAttribute("userId");
         if (userId == null) {
             throw new BusinessException(Code.BUSINESS_ERROR_USER_NOT_LOGIN, "用户未登入");
         }
@@ -55,7 +56,7 @@ public class IndentController {
     @ApiResponses({@ApiResponse(code = 20000, message = "操作成功"),
             @ApiResponse(code = 60101, message = "数据不存在")})
     @DeleteMapping("/{id}")
-    public Result<Boolean> deleteIndent(@PathVariable Integer id) {
+    public Result<Boolean> deleteIndent(@PathVariable Long id) {
         Indent indent = indentService.getById(id);
         if (indentService.deleteById(id)) {
             return Result.success();
@@ -74,7 +75,7 @@ public class IndentController {
     @PostMapping
     public Result insertIndent(@RequestBody Ticket ticket, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        Integer userId = (Integer) session.getAttribute("userId");
+        Long userId = (Long) session.getAttribute("userId");
         if (userId == null) {
             throw new BusinessException(Code.BUSINESS_ERROR_USER_NOT_LOGIN, "用户未登入");
         }
@@ -87,7 +88,7 @@ public class IndentController {
         if (ticketService.save(ticket) == false) {
             throw new BusinessException(Code.INSERT_ERROR, "数据插入失败");
         }
-        Indent indent = new Indent(new Date(), ticket.getId(), ticket, userId);
+        Indent indent = new Indent(LocalDateTime.now(), ticket.getId(), ticket, userId);
         if (indentService.save(indent)) {
             return Result.success();
         } else {

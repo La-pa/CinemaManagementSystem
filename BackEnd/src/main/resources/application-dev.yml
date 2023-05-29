@@ -7,11 +7,13 @@ server:
     key-store-password: 123456
     key-store-type: JKS
     key-store: classpath:server.keystore
-
-
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 spring:
   jackson:
     default-property-inclusion: non_null
+    date-format: yyyy-MM-dd HH:mm:ss
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher

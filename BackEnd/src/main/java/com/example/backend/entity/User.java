@@ -18,7 +18,7 @@ import lombok.Data;
 @ApiModel("用户")
 public class User implements Serializable {
     @ApiModelProperty("用户ID")
-    private Integer id;
+    private Long id;
 
     @ApiModelProperty("用户名")
     private String username;

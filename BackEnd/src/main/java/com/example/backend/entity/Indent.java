@@ -5,8 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -19,11 +20,12 @@ import lombok.Data;
 @ApiModel("订单")
 public class Indent implements Serializable {
     @ApiModelProperty("订单ID")
-    @TableId(type = IdType.ASSIGN_ID)
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     @ApiModelProperty("购买时间")
-    private Date purchaseTime;
+    @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime purchaseTime;
 
     @ApiModelProperty("电影票ID（外键）")
     private Long ticketId;
@@ -33,12 +35,12 @@ public class Indent implements Serializable {
     private Ticket ticket;
 
     @ApiModelProperty("用户ID（外键）")
-    private Integer userId;
+    private Long userId;
 
     public Indent() { }
 
 
-    public Indent(Date purchaseTime, Long ticketId, Ticket ticket, Integer userId) {
+    public Indent(LocalDateTime purchaseTime, Long ticketId, Ticket ticket, Long userId) {
         this.purchaseTime = purchaseTime;
         this.ticketId = ticketId;
         this.ticket = ticket;
