@@ -1,26 +1,24 @@
 -- 向 movie 表插入示例数据
-INSERT INTO movie (id, title, genre, director, show_status, image_url, introduction, release_date)
-VALUES
-(1, '肖申克的救赎', '剧情', '弗兰克·德拉邦特', 1, 'https://example.com/shawshank_redemption.jpg', '两个被囚禁的男人在数年间建立了深厚的友谊，并通过共同的正直行为找到了慰藉和最终的救赎。', '1994-10-14'),
-(2, '教父', '犯罪、剧情', '弗朗西斯·福特·科波拉', 1, 'https://example.com/godfather.jpg', '一位年迈的黑手党家族领袖将他秘密的帝国的控制权转交给他不情愿的儿子。', '1972-03-24'),
-(3, '低俗小说', '犯罪、剧情', '昆汀·塔伦蒂诺', 1, 'https://example.com/pulp_fiction.jpg', '两个黑帮杀手、一个拳击手、一个黑帮头目的妻子以及两个餐馆抢劫犯的生活，在暴力和救赎的四个故事中交织在一起。', '1994-10-14'),
-(4, '楚门的世界', '剧情、科幻', '彼得·威尔', 1, 'https://example.com/the_truman_show.jpg', '一个男人在不知情的情况下成为一个全球电视节目的主角，而他的生活实际上是被监视的。', '1998-06-05'),
-(5, '星际穿越', '剧情、科幻', '克里斯托弗·诺兰', 1, 'https://example.com/interstellar.jpg', '一群探险家通过虫洞进入宇宙的深处，以寻找人类可居住的星球来拯救人类。', '2014-11-07'),
-(6, '泰坦尼克号', '剧情、爱情', '詹姆斯·卡梅隆', 1, 'https://example.com/titanic.jpg', '在豪华客轮泰坦尼克号的首次航行中，一位贫穷的艺术家与一位富家女子之间发生了一段不可磨灭的爱情故事。', '1997-12-19'),
-(7, '狮子王', '动画、冒险、剧情', '罗杰·阿勒斯', 1, 'https://example.com/lion_king.jpg', '一只年轻的狮子王子在成长的过程中面临着艰难的选择和困境，最终回归他的王国并接受自己的使命。', '1994-06-15'),
-(8, '放牛班的春天', '剧情、音乐', '克里斯托夫·巴拉蒂', 1, 'https://example.com/les_choristes.jpg', '一位音乐家成为一所男子寄宿学校的教师，通过音乐改变了学生们的生活。', '2004-03-17'),
-(9, '阿甘正传', '剧情、爱情', '罗伯特·泽米吉斯', 1, 'https://example.com/forrest_gump.jpg', '一个智商低下的男子通过坚强的意志和纯真的心灵在生活中取得了非凡的成就。', '1994-07-06'),
-(10, '美丽人生', '剧情、喜剧、爱情', '罗伯托·贝尼尼', 1, 'https://example.com/life_is_beautiful.jpg', '在二战期间，一位犹太人父亲为了保护自己的儿子，将困境变成了一场充满幽默和爱的游戏。', '1997-12-20'),
-(11, '指环王：护戒使者', '动作、冒险、剧情', '彼得·杰克逊', 1, 'https://example.com/lotr_fellowship.jpg', '一群不同种族的伙伴踏上了一段艰险的旅程，以摧毁邪恶的魔戒并拯救中土世界。', '2001-12-19'),
-(12, '盗梦空间', '剧情、科幻、动作', '克里斯托弗·诺兰', 1, 'https://example.com/inception.jpg', '一位潜入者进入人们的梦境，以盗取机密信息或植入想法，但这次任务却变成了一场更加复杂和危险的挑战。', '2010-07-16'),
-(13, '当幸福来敲门', '剧情、传记', '加布里尔·穆奇诺', 1, 'https://example.com/the_pursuit_of_happyness.jpg', '一个失业的父亲为了给儿子创造更好的生活，奋斗不息并追求幸福的真正含义。', '2006-12-15'),
-(14, '黑客帝国', '动作、科幻', '莉莉·沃卓斯基、拉娜·沃卓斯基', 1, 'https://example.com/the_matrix.jpg', '一名普通程序员发现自己生活在一个虚拟现实中，并加入了一场对抗机器人统治的抵抗运动。', '1999-03-31'),
-(15, '寻梦环游记', '动画、冒险、剧情', '李·昂克里奇', 1, 'https://example.com/coco.jpg', '一位年轻的男孩通过音乐和亡灵的世界，寻找他已故的祖先并揭开家族秘密的故事。', '2017-10-27'),
-(16, '美女与野兽', '爱情、奇幻、音乐', '比尔·康顿', 1, 'https://example.com/beauty_and_the_beast.jpg', '一个年轻的女孩被困在一个魔法城堡中，并与被诅咒成野兽的王子展开了一段不同寻常的爱情故事。', '2017-03-17'),
-(17, '哈利·波特与魔法石', '奇幻、冒险', '克里斯·哥伦布', 1, 'https://example.com/harry_potter_sorcerers_stone.jpg', '一个普通男孩发现自己是魔法世界中一个著名的巫师，并加入霍格华茨魔法学校的冒险故事。', '2001-11-16'),
-(18, '无间道', '犯罪、剧情、惊悚', '刘伟强、麦兆辉', 1, 'https://example.com/infernal_affairs.jpg', '一名卧底警察和一名卧底黑帮分别试图揭露对方的身份，并在互相追踪中陷入危险的境地。', '2002-12-12'),
-(19, '让子弹飞', '喜剧、动作、西部', '姜文', 1, 'https://example.com/let_the_bullets_fly.jpg', '在乱世中，一个冒充官员的阴谋家与一个悍匪领导的团队展开了一场互相较量的故事。', '2010-12-16'),
-(20, '千与千寻', '动画、奇幻、冒险', '宫崎骏', 1, 'https://example.com/spirited_away.jpg', '一个年轻的女孩进入了一个神秘的灵界，她必须通过勇气和坚持来拯救她的父母并找到回家的方法。', '2001-07-20');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (1, '肖申克的救赎', '剧情', '弗兰克·德拉邦特', 1, 'https://img2.doubanio.com/view/photo/m/public/p480747492.webp', '两个被囚禁的男人在数年间建立了深厚的友谊，并通过共同的正直行为找到了慰藉和最终的救赎。', '1994-10-14 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (2, '教父', '犯罪、剧情', '弗朗西斯·福特·科波拉', 1, 'https://img1.doubanio.com/view/photo/m/public/p1910907590.webp', '一位年迈的黑手党家族领袖将他秘密的帝国的控制权转交给他不情愿的儿子。', '1972-03-24 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (3, '低俗小说', '犯罪、剧情', '昆汀·塔伦蒂诺', 1, 'https://img2.doubanio.com/view/photo/m/public/p1910902213.webp', '两个黑帮杀手、一个拳击手、一个黑帮头目的妻子以及两个餐馆抢劫犯的生活，在暴力和救赎的四个故事中交织在一起。', '1994-10-14 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (4, '楚门的世界', '剧情、科幻', '彼得·威尔', 1, 'https://img2.doubanio.com/view/photo/m/public/p479682972.webp', '一个男人在不知情的情况下成为一个全球电视节目的主角，而他的生活实际上是被监视的。', '1998-06-05 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (5, '星际穿越', '剧情、科幻', '克里斯托弗·诺兰', 1, 'https://img2.doubanio.com/view/photo/m/public/p2206088801.webp', '一群探险家通过虫洞进入宇宙的深处，以寻找人类可居住的星球来拯救人类。', '2014-11-07 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (6, '泰坦尼克号', '剧情、爱情', '詹姆斯·卡梅隆', 1, 'https://img9.doubanio.com/view/photo/m/public/p457760035.webp', '在豪华客轮泰坦尼克号的首次航行中，一位贫穷的艺术家与一位富家女子之间发生了一段不可磨灭的爱情故事。', '1997-12-19 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (7, '狮子王', '动画、冒险、剧情', '罗杰·阿勒斯', 1, 'https://img1.doubanio.com/view/photo/m/public/p726659067.webp', '一只年轻的狮子王子在成长的过程中面临着艰难的选择和困境，最终回归他的王国并接受自己的使命。', '1994-06-15 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (8, '放牛班的春天', '剧情、音乐', '克里斯托夫·巴拉蒂', 1, 'https://img2.doubanio.com/view/photo/m/public/p1910824951.webp', '一位音乐家成为一所男子寄宿学校的教师，通过音乐改变了学生们的生活。', '2004-03-17 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (9, '阿甘正传', '剧情、爱情', '罗伯特·泽米吉斯', 1, 'https://img2.doubanio.com/view/photo/m/public/p2500944103.webp', '一个智商低下的男子通过坚强的意志和纯真的心灵在生活中取得了非凡的成就。', '1994-07-06 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (10, '美丽人生', '剧情、喜剧、爱情', '罗伯托·贝尼尼', 1, 'https://img2.doubanio.com/view/photo/m/public/p510861873.webp', '在二战期间，一位犹太人父亲为了保护自己的儿子，将困境变成了一场充满幽默和爱的游戏。', '1997-12-20 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (11, '指环王：护戒使者', '动作、冒险、剧情', '彼得·杰克逊', 1, 'https://img1.doubanio.com/view/photo/m/public/p2640234840.webp', '一群不同种族的伙伴踏上了一段艰险的旅程，以摧毁邪恶的魔戒并拯救中土世界。', '2001-12-19 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (12, '盗梦空间', '剧情、科幻、动作', '克里斯托弗·诺兰', 1, 'https://img9.doubanio.com/view/photo/m/public/p513344864.webp', '一位潜入者进入人们的梦境，以盗取机密信息或植入想法，但这次任务却变成了一场更加复杂和危险的挑战。', '2010-07-16 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (13, '当幸福来敲门', '剧情、传记', '加布里尔·穆奇诺', 1, 'https://img1.doubanio.com/view/photo/m/public/p1312700628.webp', '一个失业的父亲为了给儿子创造更好的生活，奋斗不息并追求幸福的真正含义。', '2006-12-15 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (14, '黑客帝国', '动作、科幻', '莉莉·沃卓斯基、拉娜·沃卓斯基', 1, 'https://img1.doubanio.com/view/photo/m/public/p451926968.webp', '一名普通程序员发现自己生活在一个虚拟现实中，并加入了一场对抗机器人统治的抵抗运动。', '1999-03-31 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (15, '寻梦环游记', '动画、冒险、剧情', '李·昂克里奇', 1, 'https://img1.doubanio.com/view/photo/m/public/p2503997609.webp', '一位年轻的男孩通过音乐和亡灵的世界，寻找他已故的祖先并揭开家族秘密的故事。', '2017-10-27 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (16, '美女与野兽', '爱情、奇幻、音乐', '比尔·康顿', 1, 'https://img9.doubanio.com/view/photo/m/public/p2417948644.webp', '一个年轻的女孩被困在一个魔法城堡中，并与被诅咒成野兽的王子展开了一段不同寻常的爱情故事。', '2017-03-17 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (17, '哈利·波特与魔法石', '奇幻、冒险', '克里斯·哥伦布', 1, 'https://img9.doubanio.com/view/photo/m/public/p2614949805.webp', '一个普通男孩发现自己是魔法世界中一个著名的巫师，并加入霍格华茨魔法学校的冒险故事。', '2001-11-16 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (18, '无间道', '犯罪、剧情、惊悚', '刘伟强、麦兆辉', 1, 'https://img2.doubanio.com/view/photo/m/public/p2564556863.webp', '一名卧底警察和一名卧底黑帮分别试图揭露对方的身份，并在互相追踪中陷入危险的境地。', '2002-12-12 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (19, '让子弹飞', '喜剧、动作、西部', '姜文', 1, 'https://img1.doubanio.com/view/photo/m/public/p1512562287.webp', '在乱世中，一个冒充官员的阴谋家与一个悍匪领导的团队展开了一场互相较量的故事。', '2010-12-16 00:00:00');
+INSERT INTO cinema.movie (id, title, genre, director, show_status, image_url, introduction, release_date) VALUES (20, '千与千寻', '动画、奇幻、冒险', '宫崎骏', 1, 'https://img1.doubanio.com/view/photo/m/public/p2557573348.webp', '一个年轻的女孩进入了一个神秘的灵界，她必须通过勇气和坚持来拯救她的父母并找到回家的方法。', '2001-07-20 00:00:00');
 
 -- 向 room 表插入示例数据
 INSERT INTO room (id, name)
