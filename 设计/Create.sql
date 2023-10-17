@@ -1,3 +1,6 @@
+CREATE DATABASE cinema
+use cinema
+
 CREATE TABLE movie (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(50),
